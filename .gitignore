@@ -1,0 +1,13 @@
+# Source material not meant for the public site repo
+*.pdf
+!assets/Ariel_Chau_Resume.pdf
+*.jpeg
+Screenshot*.png
+images.png
+united-health-care-symbol.webp
+4wWRzAfEQmSag6wugA7I_camosun_college.webp
+
+# Editor/tooling
+.claude/
+.DS_Store
+Thumbs.db
