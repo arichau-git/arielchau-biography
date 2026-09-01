@@ -540,6 +540,7 @@ mark.exp-highlight {
   gap: 22px;
   margin-bottom: 56px;
 }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -821,7 +822,8 @@ mark.exp-highlight {
   .about-grid,
   .two-col,
   .edu-grid,
-  .card-grid {
+  .card-grid,
+  .card-grid-3 {
     grid-template-columns: 1fr;
   }
 
