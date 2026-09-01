@@ -267,7 +267,7 @@ ul { padding-left: 0; list-style: none; }
 /* ---------- About ---------- */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: 1fr 1.6fr;
   gap: 50px;
 }
 .about-grid p { max-width: 62ch; }
