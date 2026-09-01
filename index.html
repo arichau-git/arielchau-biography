@@ -275,27 +275,25 @@
       <div class="reveal map-section">
         <div class="map-heading">
           <h4 class="sub-label">Places I've Been</h4>
-          <span class="map-legend"><i></i>Visited</span>
+          <span class="map-legend"><i></i>Visited — hover a dot for cities</span>
         </div>
-        <div class="world-map" id="worldMap" data-src="assets/world-map.svg">
-          <noscript><img src="assets/world-map.svg" alt="World map with Japan, Vietnam, Canada, and the United States highlighted"></noscript>
-        </div>
-        <div class="travel-list">
-          <div class="travel-country">
-            <p class="travel-country-name"><span class="travel-code">JP</span>Japan</p>
-            <p class="travel-cities">Tokyo, Kyoto, Osaka, Sapporo</p>
-          </div>
-          <div class="travel-country">
-            <p class="travel-country-name"><span class="travel-code">VN</span>Vietnam</p>
-            <p class="travel-cities">Sóc Trăng, Cần Thơ, Đà Lạt, Hồ Chí Minh City, Biên Hòa, Đồng Nai, Vũng Tàu, Phan Thiết, Phú Quốc, Nha Trang, Huế, Đà Nẵng, Hội An, Tây Ninh</p>
-          </div>
-          <div class="travel-country">
-            <p class="travel-country-name"><span class="travel-code">CA</span>Canada</p>
-            <p class="travel-cities">Victoria, Vancouver, Toronto, Edmonton, Alberta</p>
-          </div>
-          <div class="travel-country">
-            <p class="travel-country-name"><span class="travel-code">US</span>United States</p>
-            <p class="travel-cities">Minneapolis, Chicago, Dallas, Houston, Austin, San Francisco, San Diego, New York, Alabama, Cincinnati, Cleveland, Boston</p>
+        <div class="world-map">
+          <div class="world-map-canvas">
+            <div class="world-map-svg" id="worldMap" data-src="assets/world-map.svg">
+              <noscript><img src="assets/world-map.svg" alt="World map with Japan, Vietnam, Canada, and the United States highlighted"></noscript>
+            </div>
+            <div class="map-markers" id="mapMarkers">
+              <button type="button" class="map-marker" style="left: 82.44%; top: 28.41%;" data-country="Japan" data-cities="Tokyo, Kyoto, Osaka, Sapporo" aria-label="Japan: Tokyo, Kyoto, Osaka, Sapporo"></button>
+              <button type="button" class="map-marker" style="left: 76.2%; top: 40.08%;" data-country="Vietnam" data-cities="Sóc Trăng, Cần Thơ, Đà Lạt, Hồ Chí Minh City, Biên Hòa, Đồng Nai, Vũng Tàu, Phan Thiết, Phú Quốc, Nha Trang, Huế, Đà Nẵng, Hội An, Tây Ninh" aria-label="Vietnam: Sóc Trăng, Cần Thơ, Đà Lạt, Hồ Chí Minh City, Biên Hòa, Đồng Nai, Vũng Tàu, Phan Thiết, Phú Quốc, Nha Trang, Huế, Đà Nẵng, Hội An, Tây Ninh"></button>
+              <button type="button" class="map-marker" style="left: 25.59%; top: 15.43%;" data-country="Canada" data-cities="Victoria, Vancouver, Toronto, Edmonton, Alberta" aria-label="Canada: Victoria, Vancouver, Toronto, Edmonton, Alberta"></button>
+              <button type="button" class="map-marker" style="left: 23.26%; top: 26.95%;" data-country="United States" data-cities="Minneapolis, Chicago, Dallas, Houston, Austin, San Francisco, San Diego, New York, Alabama, Cincinnati, Cleveland, Boston" aria-label="United States: Minneapolis, Chicago, Dallas, Houston, Austin, San Francisco, San Diego, New York, Alabama, Cincinnati, Cleveland, Boston"></button>
+            </div>
+            <div class="map-tooltip" id="mapTooltip">
+              <div class="map-tooltip-inner">
+                <p class="map-tooltip-country"></p>
+                <p class="map-tooltip-cities"></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

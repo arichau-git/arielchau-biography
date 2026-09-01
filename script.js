@@ -52,6 +52,42 @@ if (mapContainer) {
     });
 }
 
+// World map: marker hover/tap tooltips showing visited cities per country
+const mapMarkers = document.querySelectorAll('.map-marker');
+const mapTooltip = document.getElementById('mapTooltip');
+
+if (mapMarkers.length && mapTooltip) {
+  const tooltipCountry = mapTooltip.querySelector('.map-tooltip-country');
+  const tooltipCities = mapTooltip.querySelector('.map-tooltip-cities');
+
+  function showMapTooltip(marker) {
+    tooltipCountry.textContent = marker.dataset.country;
+    tooltipCities.textContent = marker.dataset.cities;
+    mapTooltip.style.left = marker.style.left;
+    mapTooltip.style.top = marker.style.top;
+    mapTooltip.classList.add('visible');
+  }
+
+  function hideMapTooltip() {
+    mapTooltip.classList.remove('visible');
+  }
+
+  mapMarkers.forEach((marker) => {
+    marker.addEventListener('mouseenter', () => showMapTooltip(marker));
+    marker.addEventListener('mouseleave', hideMapTooltip);
+    marker.addEventListener('focus', () => showMapTooltip(marker));
+    marker.addEventListener('blur', hideMapTooltip);
+    // Tap-to-toggle for touch devices, where hover doesn't apply
+    marker.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isShowingThis = mapTooltip.classList.contains('visible') && tooltipCountry.textContent === marker.dataset.country;
+      isShowingThis ? hideMapTooltip() : showMapTooltip(marker);
+    });
+  });
+
+  document.addEventListener('click', hideMapTooltip);
+}
+
 // Experience page: keyword search over bullet points
 const expSearch = document.getElementById('expSearch');
 if (expSearch) {

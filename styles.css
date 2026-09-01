@@ -580,32 +580,40 @@ mark.exp-highlight {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 18px;
-  margin-bottom: 36px;
+  margin-bottom: 12px;
   box-sizing: border-box;
+}
+.world-map-canvas {
+  position: relative;
+  width: 100%;
   aspect-ratio: 2754 / 1398;
+}
+.world-map-svg {
+  position: absolute;
+  inset: 0;
   overflow: hidden;
 }
-.world-map svg {
+.world-map-svg svg {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 /* Base land + highlighted countries (id selectors carry enough specificity
    to beat the map's own embedded stylesheet regardless of source order) */
-.world-map .landxx,
-.world-map .antxx {
+.world-map-svg .landxx,
+.world-map-svg .antxx {
   fill: var(--dust);
   stroke: var(--card-bg);
   stroke-width: 0.5;
 }
-.world-map .oceanxx {
+.world-map-svg .oceanxx {
   fill: var(--card-bg);
   stroke: none;
 }
-.world-map .jp,
-.world-map .vn,
-.world-map .ca,
-.world-map .us {
+.world-map-svg .jp,
+.world-map-svg .vn,
+.world-map-svg .ca,
+.world-map-svg .us {
   fill: var(--taupe-deep) !important;
   stroke: var(--card-bg) !important;
   stroke-width: 5 !important;
@@ -614,32 +622,76 @@ mark.exp-highlight {
   filter: drop-shadow(0 0 2.5px rgba(0, 0, 0, 0.3));
 }
 
-/* ---------- Travel ---------- */
-.travel-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px 32px;
+/* ---------- Map markers & tooltip ---------- */
+.map-markers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
-.travel-country-name {
+.map-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--taupe-deep);
+  border: 2px solid var(--card-bg);
+  box-shadow: 0 0 0 2px var(--taupe-deep), 0 2px 8px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  padding: 0;
+  pointer-events: auto;
+  transition: transform 0.15s ease;
+}
+.map-marker:hover,
+.map-marker:focus-visible {
+  transform: translate(-50%, -50%) scale(1.35);
+  outline: none;
+}
+.map-tooltip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 14px));
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 260px;
+  box-sizing: border-box;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 5;
+}
+.map-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.map-tooltip-inner {
+  max-height: 150px;
+  overflow-y: auto;
+}
+.map-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--card-bg);
+}
+.map-tooltip-country {
+  margin: 0 0 3px;
   font-family: var(--serif);
-  font-size: 1.05rem;
-  color: var(--text);
-  margin: 0 0 4px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-size: 0.95rem;
+  color: var(--accent);
 }
-.travel-code {
-  font-family: var(--sans);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--bg);
-  background: var(--accent);
-  border-radius: 5px;
-  padding: 3px 6px;
+.map-tooltip-cities {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
-.travel-cities { margin: 0; font-size: 0.92rem; }
 
 /* ---------- Contact ---------- */
 .contact { text-align: center; }
@@ -715,11 +767,17 @@ mark.exp-highlight {
     height: 152px;
   }
 
-  .travel-list {
-    grid-template-columns: 1fr;
-  }
-
   .world-map {
     padding: 10px;
+  }
+
+  .map-marker {
+    width: 13px;
+    height: 13px;
+  }
+
+  .map-tooltip {
+    width: 200px;
+    font-size: 0.9em;
   }
 }
