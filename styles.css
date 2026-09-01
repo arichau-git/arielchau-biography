@@ -497,7 +497,6 @@ mark.exp-highlight {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  margin-top: 50px;
 }
 .edu-card {
   background: var(--card-bg);
