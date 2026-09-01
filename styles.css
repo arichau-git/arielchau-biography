@@ -540,7 +540,6 @@ mark.exp-highlight {
   gap: 22px;
   margin-bottom: 56px;
 }
-.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -556,6 +555,44 @@ mark.exp-highlight {
 }
 .card h3 { font-size: 1.15rem; margin-bottom: 10px; }
 .card p { margin: 0; }
+
+/* ---------- Trait strip (Personality) ---------- */
+.trait-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 40px;
+}
+.trait {
+  padding: 0 36px;
+  border-left: 1px solid var(--border);
+}
+.trait:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+.trait-tag {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.trait-type {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.trait-sub {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.trait-desc { color: var(--text-muted); margin: 0; }
 
 .two-col {
   display: grid;
@@ -822,9 +859,22 @@ mark.exp-highlight {
   .about-grid,
   .two-col,
   .edu-grid,
-  .card-grid,
-  .card-grid-3 {
+  .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .trait-strip {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .trait {
+    padding: 24px 0 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .trait:first-child {
+    padding-top: 0;
+    border-top: none;
   }
 
   .hero { padding: 90px 0 60px; }
