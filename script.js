@@ -68,6 +68,9 @@ if (expSearch) {
     const bullets = Array.from(item.querySelectorAll('li')).map((li) => ({
       el: li,
       original: li.innerHTML,
+      // Hidden synonyms/related terms — let a bullet surface for concepts it
+      // describes but doesn't literally say (e.g. "project management").
+      keywords: (li.dataset.keywords || '').toLowerCase(),
     }));
     bulletData.push({ item, title, org, bullets });
   });
@@ -97,8 +100,11 @@ if (expSearch) {
 
       let itemHasMatch = false;
 
-      bullets.forEach(({ el, original }) => {
-        const bulletMatch = headerMatch || el.textContent.toLowerCase().includes(query);
+      bullets.forEach(({ el, original, keywords }) => {
+        const bulletMatch =
+          headerMatch ||
+          el.textContent.toLowerCase().includes(query) ||
+          keywords.includes(query);
         if (bulletMatch) {
           el.innerHTML = highlight(original, query);
           el.style.display = '';
