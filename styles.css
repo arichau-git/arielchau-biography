@@ -352,6 +352,38 @@ ul { padding-left: 0; list-style: none; }
   padding: 10px 0 40px;
   color: var(--text-muted);
 }
+.exp-quick-tags {
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+}
+.exp-quick-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+.exp-quick-list { margin: 0; }
+.tag-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-family: var(--sans);
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+.tag-btn:hover { border-color: var(--accent); color: var(--text); }
+.tag-btn.active {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--bg-alt);
+}
 mark.exp-highlight {
   background: var(--blush);
   color: var(--text);

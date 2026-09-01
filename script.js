@@ -184,12 +184,36 @@ if (expSearch) {
     }
   }
 
-  expSearch.addEventListener('input', runSearch);
+  const quickTagButtons = document.querySelectorAll('.tag-btn');
+
+  function setActiveTag(query) {
+    quickTagButtons.forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.keyword.toLowerCase() === query.toLowerCase());
+    });
+  }
+
+  expSearch.addEventListener('input', () => {
+    setActiveTag(expSearch.value.trim());
+    runSearch();
+  });
+
+  quickTagButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const keyword = btn.dataset.keyword;
+      // Clicking the already-active tag clears the filter; otherwise apply it
+      const isActive = btn.classList.contains('active');
+      expSearch.value = isActive ? '' : keyword;
+      setActiveTag(expSearch.value);
+      runSearch();
+      expSearch.focus();
+    });
+  });
 
   // Pre-fill and run the search if arriving via a link like experience.html?q=product+ownership
   const presetQuery = new URLSearchParams(window.location.search).get('q');
   if (presetQuery) {
     expSearch.value = presetQuery;
+    setActiveTag(presetQuery);
     runSearch();
   }
 }
