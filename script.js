@@ -116,7 +116,6 @@ if (expSearch) {
   const items = document.querySelectorAll('.timeline-item');
   const resultCount = document.getElementById('expResultCount');
   const emptyState = document.getElementById('expEmpty');
-  const emptyQuery = document.getElementById('expEmptyQuery');
 
   // Cache each bullet's original markup so highlights can be reapplied cleanly on every keystroke
   const bulletData = [];
@@ -147,7 +146,6 @@ if (expSearch) {
 
   function runSearch() {
     const query = expSearch.value.trim().toLowerCase();
-    let totalShown = 0;
     let anyVisible = false;
 
     bulletData.forEach(({ item, title, org, bullets }) => {
@@ -167,7 +165,6 @@ if (expSearch) {
           el.innerHTML = highlight(original, query);
           el.style.display = '';
           itemHasMatch = true;
-          totalShown += 1;
         } else {
           el.style.display = 'none';
         }
@@ -179,12 +176,11 @@ if (expSearch) {
 
     if (resultCount) {
       resultCount.textContent = query
-        ? `Showing ${totalShown} matching bullet point${totalShown === 1 ? '' : 's'} for “${expSearch.value.trim()}”`
+        ? `Showing results for “${expSearch.value.trim()}”`
         : 'Showing everything — type to filter.';
     }
     if (emptyState) {
       emptyState.style.display = query && !anyVisible ? 'block' : 'none';
-      if (emptyQuery) emptyQuery.textContent = expSearch.value.trim();
     }
   }
 
