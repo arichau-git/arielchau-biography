@@ -586,7 +586,7 @@ mark.exp-highlight {
 .world-map-canvas {
   position: relative;
   width: 100%;
-  aspect-ratio: 2754 / 1398;
+  aspect-ratio: 2754 / 1200;
 }
 .world-map-svg {
   position: absolute;
