@@ -224,6 +224,24 @@ ul { padding-left: 0; list-style: none; }
   color: var(--text);
 }
 .btn-ghost:hover { border-color: var(--accent); }
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-icon img {
+  display: block;
+  flex-shrink: 0;
+}
+.btn-primary.btn-icon img {
+  filter: invert(1);
+}
+[data-theme="dark"] .btn-primary.btn-icon img {
+  filter: none;
+}
+[data-theme="dark"] .btn-ghost.btn-icon img {
+  filter: invert(1);
+}
 
 /* ---------- Sections ---------- */
 .section { padding: 90px 0; }
