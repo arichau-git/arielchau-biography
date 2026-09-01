@@ -1,6 +1,5 @@
 # Source material not meant for the public site repo
 *.pdf
-!assets/Ariel_Chau_Resume.pdf
 *.jpeg
 Screenshot*.png
 images.png

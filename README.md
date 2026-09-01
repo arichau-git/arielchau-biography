@@ -7,7 +7,6 @@ no build step, no dependencies.
 - `index.html` — all page content
 - `styles.css` — styling (light/dark mode aware)
 - `script.js` — mobile nav + scroll animations
-- `assets/Ariel_Chau_Resume.pdf` — downloadable résumé (swap this file to update the download link)
 
 ## Preview locally
 Just double-click `index.html`, or from this folder run:
@@ -36,7 +35,6 @@ then open http://localhost:8000
 
 ## Updating content later
 - Text: edit the relevant section directly in `index.html`.
-- Résumé: replace `assets/Ariel_Chau_Resume.pdf` with a new file of the same name.
 - Photo: if you want to add a headshot, drop an image into `assets/` and add an `<img>` tag
   in the `.about-grid` or `.hero-inner` section of `index.html`.
 - Colors: tweak the CSS variables at the top of `styles.css` (`--accent`, `--bg`, etc.)
