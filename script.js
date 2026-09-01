@@ -135,9 +135,9 @@ if (expSearch) {
   const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
   // Wrap matches in <mark>, but only inside text runs (skips existing tags like <strong>)
-  function highlight(html, query) {
-    if (!query) return html;
-    const re = new RegExp(escapeRegExp(query), 'gi');
+  function highlight(html, terms) {
+    if (!terms.length) return html;
+    const re = new RegExp(terms.map(escapeRegExp).join('|'), 'gi');
     return html.replace(/(<[^>]+>)|([^<]+)/g, (whole, tag, text) => {
       if (tag) return tag;
       return text.replace(re, '<mark class="exp-highlight">$&</mark>');
@@ -146,23 +146,23 @@ if (expSearch) {
 
   function runSearch() {
     const query = expSearch.value.trim().toLowerCase();
+    // Match each word independently (AND across words) rather than requiring the whole
+    // phrase verbatim — "data analytics" should find anything with both words, in any
+    // order or position, not just the exact contiguous phrase "data analytics".
+    const terms = query.split(/\s+/).filter(Boolean);
     let anyVisible = false;
 
     bulletData.forEach(({ item, title, org, bullets }) => {
-      const headerMatch =
-        !query ||
-        (title && title.textContent.toLowerCase().includes(query)) ||
-        (org && org.textContent.toLowerCase().includes(query));
+      const headerText = ((title ? title.textContent : '') + ' ' + (org ? org.textContent : '')).toLowerCase();
+      const headerMatch = terms.every((t) => headerText.includes(t));
 
       let itemHasMatch = false;
 
       bullets.forEach(({ el, original, keywords }) => {
-        const bulletMatch =
-          headerMatch ||
-          el.textContent.toLowerCase().includes(query) ||
-          keywords.includes(query);
+        const haystack = el.textContent.toLowerCase() + ' ' + keywords;
+        const bulletMatch = headerMatch || terms.every((t) => haystack.includes(t));
         if (bulletMatch) {
-          el.innerHTML = highlight(original, query);
+          el.innerHTML = highlight(original, terms);
           el.style.display = '';
           itemHasMatch = true;
         } else {
