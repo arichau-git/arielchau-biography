@@ -1,6 +1,3 @@
-// Footer year
-document.getElementById('year').textContent = new Date().getFullYear();
-
 // Theme toggle (light/dark)
 const themeToggle = document.getElementById('themeToggle');
 const root = document.documentElement;
