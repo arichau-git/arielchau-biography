@@ -86,6 +86,31 @@ if (mapMarkers.length && mapTooltip) {
   });
 
   document.addEventListener('click', hideMapTooltip);
+
+  // First-time demo: auto-show Japan's tooltip when the map scrolls into
+  // view, so visitors learn the dots are hoverable without being told.
+  const japanMarker = document.querySelector('.map-marker[data-country="Japan"]');
+  const mapSection = document.querySelector('.map-section');
+  if (japanMarker && mapSection) {
+    const demoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          demoObserver.disconnect();
+          setTimeout(() => {
+            japanMarker.classList.add('demo-pulse');
+            showMapTooltip(japanMarker);
+            setTimeout(() => {
+              hideMapTooltip();
+              japanMarker.classList.remove('demo-pulse');
+            }, 2600);
+          }, 600);
+        });
+      },
+      { threshold: 0.4 }
+    );
+    demoObserver.observe(mapSection);
+  }
 }
 
 // Experience page: keyword search over bullet points

@@ -660,6 +660,31 @@ mark.exp-highlight {
 .map-marker:focus-visible {
   outline: none;
 }
+.map-marker.demo-pulse::before {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+.map-marker.demo-pulse::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blush);
+  transform: translate(-50%, -50%);
+  animation: map-marker-pulse 1.3s ease-out infinite;
+}
+@keyframes map-marker-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
 .map-tooltip {
   position: absolute;
   transform: translate(-50%, calc(-100% - 14px));
