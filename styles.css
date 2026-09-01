@@ -504,9 +504,34 @@ mark.exp-highlight {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 26px;
+  display: flex;
+  flex-direction: column;
 }
 .edu-card h4 { margin-bottom: 4px; font-size: 1.05rem; }
 .edu-card p { margin: 0 0 6px; }
+.edu-card .muted { margin-top: auto; padding-top: 10px; margin-bottom: 0; }
+.edu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+}
+.edu-list li {
+  padding-left: 16px;
+  position: relative;
+  color: var(--text-muted);
+}
+.edu-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
 /* ---------- Cards ---------- */
 .card-grid {
