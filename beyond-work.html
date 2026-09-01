@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Work — Ariel Chau</title>
+<meta name="description" content="Beyond Ariel Chau's work — places she's traveled and volunteered.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var theme = stored || 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">Ariel Chau</a>
+    <div class="header-right">
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html#about">Overview</a>
+        <a href="experience.html">Experience</a>
+        <a href="index.html#work">Work</a>
+        <a href="beyond-work.html" class="nav-active">Beyond Work</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- PAGE HEADER -->
+  <section class="section exp-header">
+    <div class="wrap">
+      <a class="back-link reveal" href="index.html">← Back to home</a>
+      <p class="section-label reveal">Beyond Work</p>
+      <h1 class="reveal">Places I've been.</h1>
+      <p class="hero-sub reveal">
+        A running map of where I've lived, traveled, and explored. Hover — or tap — a dot to see the cities.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section section-alt" id="places">
+    <div class="wrap">
+      <div class="reveal map-section">
+        <div class="map-heading">
+          <h4 class="sub-label">Places I've Been</h4>
+          <span class="map-legend"><i></i>Visited — hover a dot for cities</span>
+        </div>
+        <div class="world-map">
+          <div class="world-map-canvas">
+            <div class="world-map-svg" id="worldMap" data-src="assets/world-map.svg">
+              <noscript><img src="assets/world-map.svg" alt="World map with Japan, Vietnam, Canada, and the United States highlighted"></noscript>
+            </div>
+            <div class="map-markers" id="mapMarkers">
+              <button type="button" class="map-marker" style="left: 82.44%; top: 33.1%;" data-country="Japan" data-cities="Tokyo, Kyoto, Osaka, Sapporo" aria-label="Japan: Tokyo, Kyoto, Osaka, Sapporo"></button>
+              <button type="button" class="map-marker" style="left: 76.2%; top: 46.69%;" data-country="Vietnam" data-cities="Sóc Trăng, Cần Thơ, Đà Lạt, Hồ Chí Minh City, Biên Hòa, Đồng Nai, Vũng Tàu, Phan Thiết, Phú Quốc, Nha Trang, Huế, Đà Nẵng, Hội An, Tây Ninh" aria-label="Vietnam: Sóc Trăng, Cần Thơ, Đà Lạt, Hồ Chí Minh City, Biên Hòa, Đồng Nai, Vũng Tàu, Phan Thiết, Phú Quốc, Nha Trang, Huế, Đà Nẵng, Hội An, Tây Ninh"></button>
+              <button type="button" class="map-marker" style="left: 25.59%; top: 17.98%;" data-country="Canada" data-cities="Victoria, Vancouver, Toronto, Edmonton, Alberta" aria-label="Canada: Victoria, Vancouver, Toronto, Edmonton, Alberta"></button>
+              <button type="button" class="map-marker" style="left: 23.26%; top: 31.4%;" data-country="United States" data-cities="Minneapolis, Chicago, Dallas, Houston, Austin, San Francisco, San Diego, New York, Alabama, Cincinnati, Cleveland, Boston" aria-label="United States: Minneapolis, Chicago, Dallas, Houston, Austin, San Francisco, San Diego, New York, Alabama, Cincinnati, Cleveland, Boston"></button>
+            </div>
+            <div class="map-tooltip" id="mapTooltip">
+              <div class="map-tooltip-inner">
+                <p class="map-tooltip-country"></p>
+                <p class="map-tooltip-cities"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
