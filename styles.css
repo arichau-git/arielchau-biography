@@ -196,6 +196,9 @@ ul { padding-left: 0; list-style: none; }
   max-width: 58ch;
   margin-top: 20px;
 }
+.hero .hero-sub {
+  font-size: 1.0875rem;
+}
 .hero-actions {
   display: flex;
   gap: 14px;
