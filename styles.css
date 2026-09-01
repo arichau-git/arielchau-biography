@@ -631,20 +631,33 @@ mark.exp-highlight {
 .map-marker {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: var(--taupe-deep);
-  border: 2px solid var(--card-bg);
-  box-shadow: 0 0 0 2px var(--taupe-deep), 0 2px 8px rgba(0, 0, 0, 0.35);
-  cursor: pointer;
+  width: 22px;
+  height: 22px;
   padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
   pointer-events: auto;
+}
+.map-marker::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blush);
+  border: 1.5px solid var(--card-bg);
+  box-shadow: 0 0 0 1.5px var(--blush), 0 2px 6px rgba(0, 0, 0, 0.35);
   transition: transform 0.15s ease;
 }
-.map-marker:hover,
+.map-marker:hover::before,
+.map-marker:focus-visible::before {
+  transform: translate(-50%, -50%) scale(1.5);
+}
 .map-marker:focus-visible {
-  transform: translate(-50%, -50%) scale(1.35);
   outline: none;
 }
 .map-tooltip {
@@ -772,8 +785,12 @@ mark.exp-highlight {
   }
 
   .map-marker {
-    width: 13px;
-    height: 13px;
+    width: 20px;
+    height: 20px;
+  }
+  .map-marker::before {
+    width: 7px;
+    height: 7px;
   }
 
   .map-tooltip {
