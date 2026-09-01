@@ -199,6 +199,18 @@ ul { padding-left: 0; list-style: none; }
 .hero .hero-sub {
   font-size: 1.0875rem;
 }
+.hero-keyword {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.hero-keyword:hover {
+  color: var(--accent-strong);
+  text-decoration-color: var(--accent-strong);
+}
 .hero-actions {
   display: flex;
   gap: 14px;

@@ -189,6 +189,13 @@ if (expSearch) {
   }
 
   expSearch.addEventListener('input', runSearch);
+
+  // Pre-fill and run the search if arriving via a link like experience.html?q=product+ownership
+  const presetQuery = new URLSearchParams(window.location.search).get('q');
+  if (presetQuery) {
+    expSearch.value = presetQuery;
+    runSearch();
+  }
 }
 
 // Scroll reveal
