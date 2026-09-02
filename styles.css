@@ -688,6 +688,8 @@ mark.exp-highlight {
   grid-template-columns: 1fr 1fr;
   gap: 50px;
 }
+.stack-block { margin-bottom: 48px; }
+.stack-block:last-child { margin-bottom: 0; }
 
 /* ---------- Tags ---------- */
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
