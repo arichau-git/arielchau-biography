@@ -799,7 +799,7 @@ mark.exp-highlight {
 .truth-replay:hover { border-color: var(--accent); color: var(--text); }
 
 /* ---------- Travel / Map ---------- */
-.volunteer-list { max-width: 62ch; }
+.volunteer-list { max-width: none; }
 
 .map-section { margin-top: 46px; }
 
