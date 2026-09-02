@@ -218,6 +218,41 @@ if (expSearch) {
   }
 }
 
+// Beyond Work page: "Two truths and a lie" mini game
+const truthGame = document.getElementById('truthGame');
+if (truthGame) {
+  const truthCards = Array.from(truthGame.querySelectorAll('.truth-card'));
+  const truthReveal = document.getElementById('truthReveal');
+  const truthHeadline = document.getElementById('truthRevealHeadline');
+  const truthReplay = document.getElementById('truthReplay');
+  const lieCard = truthCards.find((card) => card.dataset.lie === 'true');
+
+  function revealTruths(pickedCard) {
+    truthGame.classList.add('revealed');
+    truthCards.forEach((card) => card.disabled = true);
+    pickedCard.classList.add('truth-picked');
+
+    const guessedLie = pickedCard === lieCard;
+    truthHeadline.textContent = guessedLie
+      ? '🎯 Correct — that’s the lie.'
+      : `Not quite — the lie was #${lieCard.querySelector('.truth-num').textContent}.`;
+    truthReveal.classList.add('visible');
+  }
+
+  truthCards.forEach((card) => {
+    card.addEventListener('click', () => revealTruths(card));
+  });
+
+  truthReplay.addEventListener('click', () => {
+    truthGame.classList.remove('revealed');
+    truthCards.forEach((card) => {
+      card.disabled = false;
+      card.classList.remove('truth-picked');
+    });
+    truthReveal.classList.remove('visible');
+  });
+}
+
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 
